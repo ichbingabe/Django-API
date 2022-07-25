@@ -1,6 +1,9 @@
 from django.urls import path
-from . import views
+from .views import CarModelDetailChangeAndDelete, ParkingSlotDetailChangeAndDelete, ParkingSlotListAndCreate, CarModelListAndCreate
 
 urlpatterns = [
-    path('', views.index, name='index')
+    path('parkingspot/<int:pk>/', ParkingSlotDetailChangeAndDelete.as_view()),
+    path('parkingspot/', ParkingSlotListAndCreate.as_view()),
+    path('car/<int:pk>', CarModelDetailChangeAndDelete.as_view()),
+    path('car/', CarModelListAndCreate.as_view())
 ]
