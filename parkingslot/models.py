@@ -4,7 +4,7 @@ from django.forms import ValidationError
 
 def restrict_amount(value):
     if CarModel.objects.filter(parking_slot=value).count() >= 3:
-        raise ValidationError('Team already has maximal amount of rounds (3)')
+        raise ValidationError('Parking Spot has maximal amount of cars registered! (3)')
 
 
 class ParkingSlot(models.Model):
@@ -26,4 +26,4 @@ class CarModel(models.Model):
     brand = models.CharField(max_length=70)
     
     def __str__(self) :
-        return str(self.license_plate)
+        return self.license_plate
